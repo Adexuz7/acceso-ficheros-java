@@ -23,11 +23,11 @@ public class RandomAccess {
 
 	@SuppressWarnings("unused")
 	private static void insertExampleData() {
-		insertTeamData(1, "Fútbol Club Barcelona", "LFP", "Barcelona, Spain", 79, true);
-		insertTeamData(2, "Real Madrid Fútbol Club", "LFP", "Madrid, Spain", 102, true);
-		insertTeamData(3, "Club Atlético de Madrid", "LFP", "Madrid, Spain", 32, true);
+		insertTeamData(1, "Futbol Club Barcelona", "LFP", "Barcelona, Spain", 79, true);
+		insertTeamData(2, "Real Madrid Futbol Club", "LFP", "Madrid, Spain", 102, true);
+		insertTeamData(3, "Club Atletico de Madrid", "LFP", "Madrid, Spain", 32, true);
 		insertTeamData(4, "Club Deportivo Tenerife", "LFP", "Canary Islands, Spain", 0, false);
-		insertTeamData(5, "Unión Deportiva Las Palmas", "LFP", "Canary Islands, Spain", 0, false);
+		insertTeamData(5, "Union Deportiva Las Palmas", "LFP", "Canary Islands, Spain", 0, false);
 	}
 
 	public static void insertTeamData(int codigoEquipo, String nombreEquipo, String codigoLiga, String localidad,

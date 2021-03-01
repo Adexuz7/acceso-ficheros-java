@@ -196,7 +196,7 @@ public class Controller implements Initializable {
 		File f = new File(currentPathTextField.getText());
 
 		if (f.exists()) {
-			checkFileLabel.setText("Sí ­ existe");
+			checkFileLabel.setText("SÃ­ - existe");
 
 			if (f.isDirectory()) {
 				isFolderCheckBox.setSelected(true);
