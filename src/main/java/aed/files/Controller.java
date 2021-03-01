@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import org.jdom.Element;
 
+import aed.files.random.RandomAccess;
 import aed.files.xml.XML;
 import aed.files.xml.XMLModifyCupsController;
 import javafx.collections.FXCollections;
@@ -21,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -28,7 +30,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class Controller implements Initializable {
@@ -105,6 +106,15 @@ public class Controller implements Initializable {
 	@FXML
 	private Label xmlEarnedCupsLabel;
 
+	@FXML
+	private TextArea randomAccessTextArea;
+
+	@FXML
+	private Button insertRATeamButton;
+
+	@FXML
+	private Button modifyRACupsButton;
+
 	private File[] pathnames;
 
 	@Override
@@ -119,6 +129,14 @@ public class Controller implements Initializable {
 		modifyButton.setOnAction(e -> onModifyFileAction(e));
 		showContentButton.setOnAction(e -> onShowFileContentAction(e));
 
+		// Set content of random access file tab
+		RandomAccess.loadData();
+		randomAccessTextArea.setText(RandomAccess.getData());
+
+		// Random access file functions
+		insertRATeamButton.setOnAction(e -> onRAInsertTeamAction(e));
+		modifyRACupsButton.setOnAction(e -> onRAModifyCupsAction(e));
+
 		// Set content of xml tab
 		XML.createDoc();
 		xmlTeamsListView.setItems(XML.getTeams());
@@ -129,6 +147,14 @@ public class Controller implements Initializable {
 		xmlModifyCupsButton.setOnAction(e -> onModifyCupsAction(e));
 		xmlSaveButton.setOnAction(e -> onSaveAction(e));
 
+	}
+
+	private void onRAInsertTeamAction(ActionEvent e) {
+		// TO DO
+	}
+
+	private void onRAModifyCupsAction(ActionEvent e) {
+		// TO DO
 	}
 
 	private void onCheckFileAction(ActionEvent e) {

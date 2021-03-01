@@ -12,25 +12,24 @@ public class RandomAccess {
 	private static final int TEAM_BYTES = 126;
 	private static final int EARNED_CUPS_BYTES = 117;
 
-	static Scanner sc = new Scanner(System.in);
+	//static Scanner sc = new Scanner(System.in);
 	static RandomAccessFile file = null;
 
 	public static void main(String[] args) throws FileNotFoundException {
 
 		try {
-			file = new RandomAccessFile("/users/adexuz/desktop/datos.dat", "rw");
+			file = new RandomAccessFile("src/main/resources/datos.dat", "rw");
 
-			insertTeamData(file, 1, "FÃºtbol Club Barcelona", "LFP", "Barcelona, Spain", 79, true);
-			insertTeamData(file, 2, "Real Madrid FÃºtbol Club", "LFP", "Madrid, Spain", 102, true);
-			insertTeamData(file, 3, "Club AtlÃ©tico de Madrid", "LFP", "Madrid, Spain", 32, true);
+			insertTeamData(file, 1, "Fútbol Club Barcelona", "LFP", "Barcelona, Spain", 79, true);
+			insertTeamData(file, 2, "Real Madrid Fútbol Club", "LFP", "Madrid, Spain", 102, true);
+			insertTeamData(file, 3, "Club Atlético de Madrid", "LFP", "Madrid, Spain", 32, true);
 			insertTeamData(file, 4, "Club Deportivo Tenerife", "LFP", "Canary Islands, Spain", 0, false);
-			insertTeamData(file, 5, "UniÃ³n Deportiva Las Palmas", "LFP", "Canary Islands, Spain", 0, false);
+			insertTeamData(file, 5, "Unión Deportiva Las Palmas", "LFP", "Canary Islands, Spain", 0, false);
 
-			// showData();
+			showData();
 			// showTeam(5);
-			modifyCups(5, 9);
-			
-			
+			// modifyCups(5, 9);
+
 		} catch (FileNotFoundException ex) {
 			System.out.println(ex.getMessage());
 		} finally {
@@ -43,6 +42,21 @@ public class RandomAccess {
 			}
 		}
 
+	}
+
+	public static void loadData() {
+		try {
+			file = new RandomAccessFile("src/main/resources/datos.dat", "rw");
+
+			insertTeamData(file, 1, "Fútbol Club Barcelona", "LFP", "Barcelona, Spain", 79, true);
+			insertTeamData(file, 2, "Real Madrid Fútbol Club", "LFP", "Madrid, Spain", 102, true);
+			insertTeamData(file, 3, "Club Atlético de Madrid", "LFP", "Madrid, Spain", 32, true);
+			insertTeamData(file, 4, "Club Deportivo Tenerife", "LFP", "Canary Islands, Spain", 0, false);
+			insertTeamData(file, 5, "Unión Deportiva Las Palmas", "LFP", "Canary Islands, Spain", 0, false);
+
+		} catch (FileNotFoundException ex) {
+			System.out.println(ex.getMessage());
+		} 
 	}
 
 	private static void insertTeamData(RandomAccessFile file, int codigoEquipo, String nombreEquipo, String codigoLiga,
@@ -129,6 +143,61 @@ public class RandomAccess {
 		}
 	}
 
+	public static String getData() {
+		String data = "";
+
+		try {
+			file.seek(0); // nos situamos al principio
+			while (true) {
+
+				byte[] nombreEquipoBytes = new byte[40];
+				byte[] codigoLigaBytes = new byte[5];
+				byte[] localidadBytes = new byte[60];
+
+				data += file.readInt();
+				data += file.readChar();
+				
+				data += " ";
+
+				file.read(nombreEquipoBytes);
+				data += new String(nombreEquipoBytes);
+				data += file.readChar();
+
+				data += " ";
+				
+				file.read(codigoLigaBytes);
+				data += new String(codigoLigaBytes);
+				data += file.readChar();
+				
+				data += " ";
+
+				file.read(localidadBytes);
+				data += new String(localidadBytes);
+				data += file.readChar();
+				
+				data += " ";
+
+				data += file.readInt();
+				data += file.readChar();
+				
+				data += " ";
+
+				data += file.readBoolean();
+				data += file.readChar();
+				
+				data += System.lineSeparator();
+
+			}
+
+		} catch (EOFException e) {
+			System.out.println("Fin de fichero");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+
+		return data;
+	}
+
 	public static void showTeam(int codTeam) {
 		if (codTeam > 0) {
 			try {
@@ -166,20 +235,18 @@ public class RandomAccess {
 
 		}
 	}
-	
+
 	public static void modifyCups(int codTeam, int newEarnedCups) {
 		try {
 			int codTeamOffset = (codTeam - 1) * TEAM_BYTES;
 			int earnedCupsOffset = codTeamOffset + EARNED_CUPS_BYTES;
-			
+
 			file.seek(earnedCupsOffset);
 			file.writeInt(newEarnedCups);
 
 			showTeam(codTeam);
-			
-			
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
