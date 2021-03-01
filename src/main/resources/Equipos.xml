@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Equipos>
+  <Equipo nomEquipo="Real Madrid" copasGanadas="34">
+    <codLiga>PDN</codLiga>
+    <Contratos>
+      <Futbolista fechaInicio="2018-01-01" fechaFin="2019-01-01">Juan Perez</Futbolista>
+      <Futbolista fechaInicio="2017-01-01" fechaFin="2017-06-01">Pedro Lopez Mendez</Futbolista>
+      <Futbolista fechaInicio="2016-03-01" fechaFin="2016-05-08">Maria Rodriguez Marquez</Futbolista>
+    </Contratos>
+  </Equipo>
+  <Equipo nomEquipo="FC Barcelona" copasGanadas="26">
+    <codLiga>PDN</codLiga>
+    <Contratos>
+      <Futbolista fechaInicio="2018-02-01" fechaFin="2019-06-01">Victor Gonzalez Ramos</Futbolista>
+      <Futbolista fechaInicio="2016-01-01" fechaFin="2016-06-01">Mario Arteaga Mendez</Futbolista>
+    </Contratos>
+  </Equipo>
+  <Equipo nomEquipo="Tenerife" copasGanadas="4">
+    <codLiga>SDN</codLiga>
+    <Contratos>
+      <Futbolista fechaInicio="2017-05-01" fechaFin="2018-09-01">Raquel Mateo Umpierrez</Futbolista>
+      <Futbolista fechaInicio="2017-01-01" fechaFin="2017-04-01">Teresa Gutierrez Estevez</Futbolista>
+      <Futbolista fechaInicio="2017-06-01" fechaFin="2018-08-08">Roberto Fajardo Lopez</Futbolista>
+      <Futbolista fechaInicio="2016-03-01" fechaFin="2016-03-08">Raquel Mateo Umpierrez</Futbolista>
+    </Contratos>
+  </Equipo>
+  <Equipo nomEquipo="Gran Canaria" copasGanadas="3">
+    <codLiga>SDN</codLiga>
+    <Contratos>
+      <Futbolista fechaInicio="2017-05-01" fechaFin="2018-09-01">Maria Rodriguez Marquez</Futbolista>
+      <Futbolista fechaInicio="2017-01-01" fechaFin="2017-04-01">Luis Martinez Estevez</Futbolista>
+      <Futbolista fechaInicio="2017-06-01" fechaFin="2017-08-08">Carlos Perez Lopez</Futbolista>
+      <Futbolista fechaInicio="2016-03-01" fechaFin="2016-03-08">Jose Maria Martinez Bacallado</Futbolista>
+    </Contratos>
+  </Equipo>
+</Equipos>
