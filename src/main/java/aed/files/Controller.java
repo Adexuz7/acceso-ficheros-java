@@ -115,6 +115,30 @@ public class Controller implements Initializable {
 	@FXML
 	private Button modifyRACupsButton;
 
+	@FXML
+	private TextField teamRANameTextBox;
+
+	@FXML
+	private TextField codRALigaTextField;
+
+	@FXML
+	private TextField localidadRATextField;
+
+	@FXML
+	private TextField insertEarnedCupsRATextField;
+
+	@FXML
+	private CheckBox internationalRACheckBox;
+
+	@FXML
+	private TextField teamCodeRATextField;
+
+	@FXML
+	private TextField insertTeamCodeRATextField;
+
+	@FXML
+	private TextField modEarnedCupsRATextField;
+
 	private File[] pathnames;
 
 	@Override
@@ -150,18 +174,29 @@ public class Controller implements Initializable {
 	}
 
 	private void onRAInsertTeamAction(ActionEvent e) {
-		// TO DO
+		RandomAccess.insertTeamData(
+				Integer.parseInt(insertTeamCodeRATextField.getText()), 
+				teamRANameTextBox.getText(), codRALigaTextField.getText(), 
+				localidadRATextField.getText(), 
+				Integer.parseInt(insertEarnedCupsRATextField.getText()),
+				internationalRACheckBox.isSelected());
+		
+		randomAccessTextArea.setText(RandomAccess.getData());
 	}
 
 	private void onRAModifyCupsAction(ActionEvent e) {
-		// TO DO
+		RandomAccess.modifyCups(
+				Integer.parseInt(teamCodeRATextField.getText()), 
+				Integer.parseInt(modEarnedCupsRATextField.getText()));
+		
+		randomAccessTextArea.setText(RandomAccess.getData());
 	}
 
 	private void onCheckFileAction(ActionEvent e) {
 		File f = new File(currentPathTextField.getText());
 
 		if (f.exists()) {
-			checkFileLabel.setText("SÃ­ existe");
+			checkFileLabel.setText("Sí ­ existe");
 
 			if (f.isDirectory()) {
 				isFolderCheckBox.setSelected(true);
